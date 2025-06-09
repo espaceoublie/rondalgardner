@@ -72,6 +72,11 @@
       background: linear-gradient(135deg, #d4eaff, #ffffff);
       border-radius: 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    header:hover, section:hover, footer:hover {
+      transform: translateY(-5px);
     }
 
     h1, h2, h3 {
@@ -94,12 +99,13 @@
       border-radius: 100px;
       display: inline-block;
       font-size: 18px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
       margin-top: 1rem;
     }
 
     .cta-button:hover {
       background: var(--custom-btn-bg-hover-color);
+      transform: scale(1.05);
     }
 
     .video-wrapper {
@@ -126,6 +132,12 @@
       background-color: var(--section-bg-color);
       margin-bottom: 1rem;
       text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
   </style>
 </head>
