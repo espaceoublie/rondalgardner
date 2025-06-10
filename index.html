@@ -29,27 +29,113 @@
 </script>
   
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Is Your Business Fundable?",
-    "url": "https://www.businessfunding.help/",
-    "description": "A one-page SEO-optimized landing page offering Rondal Gardner's 27-point fundability checklist, business credit tips, and access to affiliate resources, consultation booking, and loan applications.",
-    "publisher": {
-      "@type": "Person",
-      "name": "Rondal Gardner"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.businessfunding.help/",
+      "url": "https://www.businessfunding.help/",
+      "name": "Is Your Business Fundable?",
+      "description": "A one-page landing page offering Rondal Gardner's fundability checklist, business credit tips, and access to affiliate resources, consultation booking, and loan applications.",
+      "publisher": { "@id": "https://www.businessfunding.help/" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://raw.githubusercontent.com/espaceoublie/rondalgardner/refs/heads/main/rondalgardner.webp",
+        "width": 1200,
+        "height": 630
+      }
     },
-    "mainEntity": {
+    {
       "@type": "VideoObject",
       "name": "Is Your Business Fundable? | Full Checklist Explained",
-      "description": "Rondal Gardner breaks down the 27 crucial points to ensure your business is fundable before seeking credit or loans.",
+      "description": "Rondal Gardner breaks down the crucial points to ensure your business is fundable before seeking credit or loans.",
       "thumbnailUrl": "https://img.youtube.com/vi/oFftaoE30dM/maxresdefault.jpg",
       "uploadDate": "2025-06-09",
       "contentUrl": "https://www.youtube.com/watch?v=oFftaoE30dM",
-      "embedUrl": "https://www.youtube.com/embed/oFftaoE30dM"
+      "embedUrl": "https://www.youtube.com/embed/oFftaoE30dM",
+      "publisher": { "@id": "https://www.businessfunding.help/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why is a consistent business name important for fundability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lenders need to verify your business's legitimacy. A consistent name across all documents and listings builds trust and avoids red flags."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does 'Good Standing Status' mean for my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It means your business is active and compliant with state regulations. File required reports and pay dues to maintain good standing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do lenders care about collateral?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Collateral provides security for the loan. Assets like vehicles, equipment, and real estate reduce the lender's risk."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a cash contribution really necessary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, it shows your financial commitment to the business. Lenders want to see that you're invested in your own success."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I need a separate business bank account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A dedicated business bank account helps establish your business's financial identity and provides a clear record of transactions."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Offer",
+      "name": "Free Business Fundability Checklist",
+      "description": "Download Rondal Gardner's checklist to assess your business's loan readiness and avoid rejection.",
+      "url": "https://www.businessfunding.help/#gift",
+      "availability": "https://schema.org/OnlineOnly",
+      "availabilityStarts": "2024-01-01T00:00:00-00:00",
+      "price": "0.00",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.businessfunding.help/",
+      "name": "Rondal Gardner",
+      "url": "https://www.businessfunding.help/",
+      "logo": "https://example.com/rondal-gardner-logo.png",
+      "description": "Rondal Gardner is a business funding expert who helps entrepreneurs improve their fundability and secure loans.",
+      "founder": {
+        "@type": "Person",
+        "name": "Rondal Gardner"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "email": "info@businessfunding.help"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/rondal-gardner-ba6684325",
+        "https://www.facebook.com/RondalGardner"  // Add other social media profiles
+      ]
     }
-  }
-  </script>
+  ]
+}
+</script>
+
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
    <style>
