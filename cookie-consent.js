@@ -16,10 +16,10 @@
   `;
 
   const settingsButtonHTML = `
-    <button id="cookie-settings-btn" style="position: fixed; bottom: 20px; left: 20px; padding: 0.6rem 1.2rem; background: #13547a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
-      Cookie Settings
-    </button>
-  `;
+  <button id="cookie-settings-btn" title="Cookie Preferences" style="position: fixed; bottom: 20px; left: 20px; padding: 0.6rem; background: #13547a; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; z-index: 9999; box-shadow: 0 2px 6px rgba(0,0,0,0.2); font-size: 20px;">
+    🔒
+  </button>
+`;
 
   function setCookie(name, value, days) {
     const d = new Date();
