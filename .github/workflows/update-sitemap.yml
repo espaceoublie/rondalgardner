@@ -2,7 +2,7 @@ name: Auto Update Sitemap
 
 on:
   push:
-    branches: [main]  # change if your branch is 'master'
+    branches: [main]
 
 jobs:
   build:
@@ -21,12 +21,16 @@ jobs:
       - name: Generate sitemap
         run: node generate-sitemap.js
 
-      - name: Commit sitemap.xml
+      - name: Configure git
         run: |
-          git config user.name "sitemap-bot"
-          git config user.email "sitemap@bot.com"
+          git config --global user.name "sitemap-bot"
+          git config --global user.email "sitemap@bot.com"
+          git config --global url."https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/".insteadOf "https://github.com/"
+
+      - name: Commit and push sitemap.xml
+        run: |
           git add sitemap.xml
           git commit -m "Update sitemap.xml" || echo "Nothing to commit"
-          git push
+          git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
