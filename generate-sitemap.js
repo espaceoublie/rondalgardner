@@ -20,7 +20,7 @@ const walk = function(dir) {
 };
 
 const htmlFiles = walk('./').map(file => {
-  const relativePath = file.replace(__dirname, '').replace(/\\/g, '/');
+  const relativePath = file.replace(process.cwd(), '').replace(/\\/g, '/');
   let url = relativePath.replace('/index.html', '/').replace('.html', '');
   url = url.replace('./', '').startsWith('/') ? url : '/' + url;
   return { url };
