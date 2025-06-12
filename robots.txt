@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /thank-you
+Disallow: /thankyou
+Disallow: /thank_you
+Disallow: /form-submitted
+Disallow: /hidden
+Disallow: /private
+Disallow: /test
+Allow: /
+
+Sitemap: https://www.businessfunding.help/sitemap.xml
