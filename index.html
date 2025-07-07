@@ -507,30 +507,60 @@
   @keyframes spin {
     100% { transform: rotate(360deg); }
   }
+    
+    .card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.card-half {
+  flex: 1 1 45%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.card-icon {
+  width: 64px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .card-half {
+    flex: 1 1 100%;
+  }
+}
+
 </style>
 
 
 </head>
 <body>
  <header class="main-header">
-  <div style="flex: 1; padding-right: 2rem;">
-    <h1 style="font-size: 3rem">
-      Get Your Free 27-Point<br>Fundability Checklist
-    </h1>
-    <p>
-      Use our proven system to make your business loan-ready<br>and get approved for the funding you need.
-    </p>
-    <a href="#gift" class="cta-button">
-      Get Your Free Checklist Now
-    </a>
-  </div>
-  <div style="flex: 0 0 250px; text-align: center;">
-    <img src="https://www.businessfunding.help/images/checklistnobg.webp" alt="Checklist illustration" style="max-width: 100%; height: auto;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2rem;">
+    <div style="flex: 1; min-width: 280px;">
+      <h1 style="font-size: 3rem">
+        Get Your Free 27-Point<br>Fundability Checklist
+      </h1>
+      <p>
+        Use our proven system to make your business loan-ready<br>and get approved for the funding you need.
+      </p>
+      <a href="#gift" class="cta-button">
+        Get Your Free Checklist Now
+      </a>
+    </div>
+    <div style="flex: 0 0 250px; text-align: center;">
+      <img src="https://www.businessfunding.help/images/checklistnobg.webp" alt="Checklist illustration" style="max-width: 100%; height: auto;">
+    </div>
   </div>
 </header>
-
-
-
 
   <section id="video">
     <h2>Why Most Business Loan Applications Get Rejected</h2>
@@ -640,39 +670,36 @@
   </style>
 </section>
 
-  <section id="highlights">
-    <h2>Key Factors That Determine Your Business Fundability</h2>
-    <blockquote><strong>Whether you're looking for $10k, $100k, or even $1 million+,</strong> lenders evaluate these critical factors before approving your application.</blockquote>
-    
-    <div class="card-row">
-      <div class="card">
-        <h3>1. Consistent Business Name</h3>
-        <p>Ensure your business name matches exactly across all documents (licenses, bank accounts, tax filings) to avoid automatic rejections.</p>
-      </div>
-      <div class="card">
-        <h3>2. Good Standing Status</h3>
-        <p>Maintain active compliance with state requirements. Late annual reports or unpaid fees can disqualify you immediately.</p>
-      </div>
+ <section id="highlights">
+  <h2>Key Factors That Determine Your Business Fundability</h2>
+  <blockquote><strong>Whether you're looking for $10k, $100k, or even $1 million+,</strong> lenders evaluate these critical factors before approving your application.</blockquote>
+
+  <div class="card-grid">
+    <div class="card-half">
+      <img src="https://www.businessfunding.help/images/consistentname.webp" alt="Consistent Name Icon" class="card-icon" loading="lazy">
+      <h3>1. Consistent Business Name</h3>
+      <p>Ensure your business name matches exactly across all documents (licenses, bank accounts, tax filings) to avoid automatic rejections.</p>
     </div>
-    
-    <div class="card-row">
-      <div class="card">
-        <h3>3. Collateral Documentation</h3>
-        <p>Properly document assets (equipment, inventory, real estate) that can secure your loan and improve approval odds.</p>
-      </div>
-      <div class="card">
-        <h3>4. Owner Cash Injection</h3>
-        <p>Lenders typically want to see you've invested 10-30% of the loan amount personally before they'll contribute.</p>
-      </div>
+    <div class="card-half">
+      <img src="https://www.businessfunding.help/images/collateral.webp" alt="Collateral Icon" class="card-icon" loading="lazy">
+      <h3>2. Collateral Documentation</h3>
+      <p>Properly document assets (equipment, inventory, real estate) that can secure your loan and improve approval odds.</p>
     </div>
-    
-    <div class="card">
-      <h3>5. Established Business Banking</h3>
+    <div class="card-half">
+      <img src="https://www.businessfunding.help/images/cash.webp" alt="Cash Injection Icon" class="card-icon" loading="lazy">
+      <h3>3. Owner Cash Injection</h3>
+      <p>Lenders typically want to see you've invested 10-30% of the loan amount personally before they'll contribute.</p>
+    </div>
+    <div class="card-half">
+      <img src="https://www.businessfunding.help/images/banking.webp" alt="Business Banking Icon" class="card-icon" loading="lazy">
+      <h3>4. Established Business Banking</h3>
       <p>A dedicated business account with 6+ months of activity demonstrates financial stability to lenders.</p>
     </div>
-    
-    <a href="#gift" class="cta-button">Get the Full 27-Point Checklist</a>
-  </section>
+  </div>
+<br>
+  <a href="#gift" class="cta-button">Get the Full 27-Point Checklist</a>
+</section>
+
 
   <section id="success">
     <h2>How This Checklist Has Helped Businesses Get Funded</h2>
