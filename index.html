@@ -800,5 +800,43 @@ It’s also important to <a href="/business-credit-vs-personal-credit">understan
       });
     });
   </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const trackedLinks = [
+    'https://info380.clickfunnels.com/',
+    'https://calendly.com/',
+    'https://member.myscoreiq.com/',
+    'https://www.linkedin.com/in/rondal-gardner'
+  ];
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    if (trackedLinks.some(url => link.href.includes(url))) {
+      link.addEventListener('click', function(e) {
+        if (!localStorage.getItem('emailSubmitted')) {
+          e.preventDefault();
+          const email = prompt("To continue, please enter your email:");
+          if (email) {
+            fetch('https://formspree.io/f/mgvyapbr', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                email: email,
+                link_clicked: link.href,
+                timestamp: new Date().toISOString()
+              })
+            })
+            .then(() => {
+              localStorage.setItem('emailSubmitted', 'true');
+              window.location.href = link.href;
+            });
+          }
+        }
+      });
+    }
+  });
+});
+</script>
+
+  
 </body>
 </html>
