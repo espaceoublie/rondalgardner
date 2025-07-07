@@ -280,10 +280,10 @@
     font-weight: 600;
     border: none;
     cursor: pointer;
-    box-sizing: border-box;
     width: auto;
     max-width: 100%;
     white-space: normal;
+    box-sizing: border-box;
   }
 
   .cta-button:hover {
@@ -326,10 +326,10 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    box-sizing: border-box;
     width: 100%;
     max-width: 100%;
     word-break: break-word;
+    box-sizing: border-box;
   }
 
   .card:hover {
@@ -341,7 +341,6 @@
     width: 100%;
     margin: 0 auto 1.5rem auto;
     box-sizing: border-box;
-    max-width: 100%;
   }
 
   .card-row {
@@ -357,10 +356,10 @@
   .card-half {
     flex: 1;
     width: 100%;
-    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    box-sizing: border-box;
   }
 
   blockquote {
@@ -417,28 +416,68 @@
     box-sizing: border-box;
   }
 
-  @media (max-width: 768px) {
+  /* Lazy loading */
+  img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
-    header,
-    section,
-    footer {
+  img[loading="lazy"].loaded {
+    opacity: 1;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
       padding: 1.5rem;
+    }
+
+    header > div:first-child {
+      padding: 0;
+      margin-bottom: 2rem;
+      width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      max-width: 90%;
+    }
+
+    header .cta-button {
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    header img {
+      max-width: 80%;
+      height: auto;
+      margin: 0 auto;
     }
 
     .card-row {
       flex-direction: column;
       align-items: stretch;
-      box-sizing: border-box;
     }
 
     .card-half {
       width: 100%;
-      box-sizing: border-box;
     }
   }
 
   @media (max-width: 480px) {
-
     header,
     section,
     footer {
@@ -459,52 +498,21 @@
     }
   }
 
-  /* Lazy loading for images */
-  img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* Loading spinner */
+  .loading-spinner {
+    margin-left: 8px;
+    animation: spin 1s linear infinite;
   }
 
-  img[loading="lazy"].loaded {
-    opacity: 1;
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
   }
-
-    @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
-  }
-
-  header > div:first-child {
-    padding-right: 0;
-    margin-bottom: 2rem;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  header .cta-button {
-    width: 100%;
-  }
-
-  header img {
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto;
-  }
-}
-
 </style>
+
 
 </head>
 <body>
- <header style="display: flex; align-items: center; justify-content: space-between; border-radius: 16px; padding: 2rem; max-width: 960px; margin: 2rem auto;">
+ <header class="main-header">
   <div style="flex: 1; padding-right: 2rem;">
     <h1 style="font-size: 3rem">
       Get Your Free 27-Point<br>Fundability Checklist
@@ -520,6 +528,7 @@
     <img src="https://www.businessfunding.help/images/checklistnobg.webp" alt="Checklist illustration" style="max-width: 100%; height: auto;">
   </div>
 </header>
+
 
 
 
