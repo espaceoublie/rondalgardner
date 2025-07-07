@@ -427,14 +427,22 @@
       <li><strong>Maintain consistency</strong> when opening new accounts or filing future documents</li>
     </ol>
 
-    <div class="checklist-form">
-      <h3>Get the Full 27-Point Fundability Checklist</h3>
-      <p>Ensure your business meets all lender requirements with our comprehensive checklist</p>
-      <form action="/submit-checklist-request" method="post">
-        <input type="email" name="email" placeholder="Your best email address" class="email-input" required>
-        <button type="submit" class="submit-btn">Send Me the Checklist</button>
-      </form>
-    </div>
+   <div class="checklist-form">
+  <h3>Get the Full 27-Point Fundability Checklist</h3>
+  <p>Ensure your business meets all lender requirements with our comprehensive checklist</p>
+  <form action="https://formspree.io/f/mgvyapbr" method="POST">
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="Your best email address" 
+      class="email-input" 
+      required
+      aria-label="Your email address">
+    <input type="hidden" name="_subject" value="New 27-Point Checklist Request">
+    <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
+    <button type="submit" class="submit-btn">Send Me the Checklist</button>
+  </form>
+</div>
 
     <div style="text-align: center; margin-top: 2rem;">
       <a href="https://www.businessfunding.help/" class="back-to-home" aria-label="Return to the homepage">← Back to Homepage</a>
