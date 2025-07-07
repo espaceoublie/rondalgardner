@@ -314,6 +314,7 @@
     box-sizing: border-box;
   }
 
+  /* Card Styles */
   .card {
     border: 1px solid #ddd;
     padding: 2rem;
@@ -353,13 +354,56 @@
     box-sizing: border-box;
   }
 
-  .card-half {
-    flex: 1;
-    width: 100%;
+  /* Highlight Card Grid */
+  .card-grid {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  .highlight-card {
+    flex: 1 1 45%;
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    max-width: 500px;
     box-sizing: border-box;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  }
+
+  .card-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.5rem;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+  }
+
+  .highlight-card:hover .card-icon {
+    transform: scale(1.1);
   }
 
   blockquote {
@@ -416,16 +460,16 @@
     box-sizing: border-box;
   }
 
-  /* Lazy loading */
-  img[loading="lazy"] {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  /* Loading spinner */
+  .loading-spinner {
+    margin-left: 8px;
+    animation: spin 1s linear infinite;
   }
 
-  img[loading="lazy"].loaded {
-    opacity: 1;
+  @keyframes spin {
+    100% { transform: rotate(360deg); }
   }
-
+    
   /* Mobile Styles */
   @media (max-width: 768px) {
     header {
@@ -472,6 +516,10 @@
       align-items: stretch;
     }
 
+    .highlight-card {
+      flex: 1 1 100%;
+    }
+
     .card-half {
       width: 100%;
     }
@@ -496,51 +544,13 @@
       width: 100%;
       box-sizing: border-box;
     }
+
+    .card-icon {
+      width: 56px;
+      height: 56px;
+    }
   }
-
-  /* Loading spinner */
-  .loading-spinner {
-    margin-left: 8px;
-    animation: spin 1s linear infinite;
-  }
-
-  @keyframes spin {
-    100% { transform: rotate(360deg); }
-  }
-    
-    .card-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.card-half {
-  flex: 1 1 45%;
-  background: #fff;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  max-width: 500px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.card-icon {
-  width: 64px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 768px) {
-  .card-half {
-    flex: 1 1 100%;
-  }
-}
-
 </style>
-
-
 </head>
 <body>
  <header class="main-header">
@@ -598,7 +608,6 @@
     <p style="font-size: 14px; margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
   </form>
 
-  <!-- ADD THIS SCRIPT RIGHT AFTER THE FORM -->
   <script>
     document.getElementById('checklistForm').addEventListener('submit', async function(e) {
       e.preventDefault();
@@ -657,17 +666,6 @@
       }
     });
   </script>
-
-  <!-- ADD THIS STYLE FOR THE SPINNER -->
-  <style>
-    .loading-spinner {
-      margin-left: 8px;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-  </style>
 </section>
 
  <section id="highlights">
@@ -675,22 +673,22 @@
   <blockquote><strong>Whether you're looking for $10k, $100k, or even $1 million+,</strong> lenders evaluate these critical factors before approving your application.</blockquote>
 
   <div class="card-grid">
-    <div class="card-half">
+    <div class="highlight-card">
       <img src="https://www.businessfunding.help/images/consistentname.webp" alt="Consistent Name Icon" class="card-icon" loading="lazy">
       <h3>1. Consistent Business Name</h3>
       <p>Ensure your business name matches exactly across all documents (licenses, bank accounts, tax filings) to avoid automatic rejections.</p>
     </div>
-    <div class="card-half">
+    <div class="highlight-card">
       <img src="https://www.businessfunding.help/images/collateral.webp" alt="Collateral Icon" class="card-icon" loading="lazy">
       <h3>2. Collateral Documentation</h3>
       <p>Properly document assets (equipment, inventory, real estate) that can secure your loan and improve approval odds.</p>
     </div>
-    <div class="card-half">
+    <div class="highlight-card">
       <img src="https://www.businessfunding.help/images/cash.webp" alt="Cash Injection Icon" class="card-icon" loading="lazy">
       <h3>3. Owner Cash Injection</h3>
       <p>Lenders typically want to see you've invested 10-30% of the loan amount personally before they'll contribute.</p>
     </div>
-    <div class="card-half">
+    <div class="highlight-card">
       <img src="https://www.businessfunding.help/images/banking.webp" alt="Business Banking Icon" class="card-icon" loading="lazy">
       <h3>4. Established Business Banking</h3>
       <p>A dedicated business account with 6+ months of activity demonstrates financial stability to lenders.</p>
@@ -699,7 +697,6 @@
 <br>
   <a href="#gift" class="cta-button">Get the Full 27-Point Checklist</a>
 </section>
-
 
   <section id="success">
     <h2>How This Checklist Has Helped Businesses Get Funded</h2>
@@ -718,7 +715,7 @@
     </div>
   </section>
 
-  <section id="offers">
+      <section id="offers">
     <h2>Ready to Take Your Fundability to the Next Level?</h2>
     
     <div class="card card-full">
@@ -735,33 +732,31 @@
     </div>
     
     <div class="card card-full" style="margin-top: 1.5rem;">
-    <h3>Reduce Payment Processing Fees by 50%</h3>
-    <p><strong>Did you know?</strong> High credit card processing fees eat into your profits. Many businesses overpay by thousands annually.</p>
-    <p>Book a free consultation to discover how you can:</p>
-    <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
-      <li>Lower your payment processing rates immediately</li>
-      <li>Get transparent pricing with no hidden fees</li>
-      <li>Access next-day funding</li>
-    </ul>
-    <a href="https://www.deposyt.com/rondal/" class="cta-button" target="_blank" rel="noopener noreferrer">Save on Payment Processing</a>
-  </div>
+      <h3>Reduce Payment Processing Fees by 50%</h3>
+      <p><strong>Did you know?</strong> High credit card processing fees eat into your profits. Many businesses overpay by thousands annually.</p>
+      <p>Book a free consultation to discover how you can:</p>
+      <ul style="text-align: left; max-width: 600px; margin: 1rem auto;">
+        <li>Lower your payment processing rates immediately</li>
+        <li>Get transparent pricing with no hidden fees</li>
+        <li>Access next-day funding</li>
+      </ul>
+      <a href="https://www.deposyt.com/rondal/" class="cta-button" target="_blank" rel="noopener noreferrer" onclick="gtag('event', 'click', {'event_category': 'Payment Processing', 'event_label': 'Deposit.com Link'});">Save on Payment Processing</a>
+    </div>
     
-    <div class="card-row">
-      <div class="card card-half">
-        <div>
-          <h3>1-on-1 Fundability Review</h3>
-          <p>Get personalized guidance from Rondal Gardner to identify and fix your specific fundability issues before applying.</p>
-          <p><strong>Limited spots available</strong></p>
-        </div>
+    <div class="card-grid">
+      <!-- 1-on-1 Fundability Review -->
+      <div class="highlight-card">
+        <h3>1-on-1 Fundability Review</h3>
+        <p>Get personalized guidance to identify and fix your specific fundability issues before applying.</p>
+        <p><strong>Limited spots available</strong></p>
         <a href="https://calendly.com/cpysolutions/30min" class="cta-button" target="_blank" rel="noopener noreferrer">Book Your Call</a>
       </div>
       
-      <div class="card card-half">
-        <div>
-          <h3>Check Your Personal Credit</h3>
-          <p>Your personal FICO score impacts business funding options. Check yours now to avoid surprises.</p>
-          <p><strong>Free updated report</strong></p>
-        </div>
+      <!-- Check Your Personal Credit -->
+      <div class="highlight-card">
+        <h3>Check Your Personal Credit</h3>
+        <p>Your personal FICO score impacts business funding options. Check yours now to avoid surprises.</p>
+        <p><strong>Free updated report</strong></p>
         <a href="https://member.myscoreiq.com/get-fico-max.aspx?offercode=432140NK" class="cta-button" target="_blank" rel="noopener noreferrer">Check My Credit Score</a>
       </div>
     </div>
@@ -792,9 +787,13 @@
     <h2>Need Personalized Help With Your Fundability?</h2>
     <div class="card">
       <p><strong>If you've had loan applications denied—or approved for less than you need—</strong>it's likely due to correctable fundability issues. Let's identify and fix them before you apply again.</p>
-      <div class="card-row">
-        <a href="https://www.linkedin.com/in/rondal-gardner-ba6684325" class="cta-button" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
-        <a href="mailto:info@businessfunding.help" class="cta-button">Email Us</a>
+      <div class="card-row" style="gap: 1rem; justify-content: center;">
+        <a href="https://www.linkedin.com/in/rondal-gardner-ba6684325" class="cta-button" style="flex: 1; min-width: 200px; text-align: center;" target="_blank" rel="noopener noreferrer">
+          Connect on LinkedIn
+        </a>
+        <a href="mailto:info@businessfunding.help" class="cta-button" style="flex: 1; min-width: 200px; text-align: center;">
+          Email Us
+        </a>
       </div>
     </div>
   </section>
@@ -805,19 +804,17 @@
 
   <p>Some of the most common reasons for loan rejection include inconsistent business details across legal documents, lack of business credit history, no separate business bank account, and insufficient collateral or owner investment. These issues often go unnoticed until you apply and get denied.</p>
 
-  <p>That's where a fundability checklist comes in. It acts as a pre-approval blueprint—helping you correct weak spots before the lender sees them. From verifying that your business name is consistent on all government filings to making sure you’ve invested your own capital, the checklist ensures you cover all the critical points.</p>
+  <p>That's where a fundability checklist comes in. It acts as a pre-approval blueprint—helping you correct weak spots before the lender sees them. From verifying that your business name is consistent on all government filings to making sure you've invested your own capital, the checklist ensures you cover all the critical points.</p>
 
   <p>Lenders also expect to see a properly registered business entity, licenses appropriate to your industry, and a professional online presence with matching contact information. Your business bank account should have at least 6 months of transactional history. 
 If your personal credit is involved, checking your credit report for errors beforehand can save you time and frustration. 
-It’s also important to <a href="/business-credit-vs-personal-credit">understand the difference between business credit and personal credit</a> — lenders evaluate them differently, and relying on the wrong one can hurt your chances.</p>
+It's also important to <a href="/business-credit-vs-personal-credit">understand the difference between business credit and personal credit</a> — lenders evaluate them differently, and relying on the wrong one can hurt your chances.</p>
 
-  
   <p>To further strengthen your application, document any collateral you have, like inventory or real estate, and prepare to demonstrate your cash flow. These show the lender you can repay what you borrow and reduce their risk.</p>
 
-  <p>The 27-point fundability checklist provided on this site was created to walk you through each of these steps in a simple, actionable way. Download it now and start building your business’s fundability profile before you apply.</p>
+  <p>The 27-point fundability checklist provided on this site was created to walk you through each of these steps in a simple, actionable way. Download it now and start building your business's fundability profile before you apply.</p>
 </section>
 
-<!-- Bonus: Schema for Article -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -849,33 +846,13 @@ It’s also important to <a href="/business-credit-vs-personal-credit">understan
   </footer>
 
   <script>
-    // Lazy loading for images
-    document.addEventListener("DOMContentLoaded", function() {
-      const lazyImages = document.querySelectorAll("img[loading='lazy']");
-      
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.classList.add("loaded");
-            observer.unobserve(img);
-          }
-        });
-      });
-      
-      lazyImages.forEach(img => {
-        imageObserver.observe(img);
-      });
-      
-      // Track form submissions
-      const forms = document.querySelectorAll("form");
-      forms.forEach(form => {
-        form.addEventListener("submit", function() {
-          gtag('event', 'form_submission', {
-            'event_category': 'lead_generation',
-            'event_label': this.id || 'unknown_form'
-          });
+    // Track form submissions
+    const forms = document.querySelectorAll("form");
+    forms.forEach(form => {
+      form.addEventListener("submit", function() {
+        gtag('event', 'form_submission', {
+          'event_category': 'lead_generation',
+          'event_label': this.id || 'unknown_form'
         });
       });
     });
@@ -901,6 +878,7 @@ document.addEventListener('DOMContentLoaded', function() {
               method: 'POST',
               headers: {'Content-Type': 'application/json'},
               body: JSON.stringify({
+               
                 email: email,
                 link_clicked: link.href,
                 timestamp: new Date().toISOString()
