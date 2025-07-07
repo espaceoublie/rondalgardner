@@ -832,11 +832,26 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         }
       });
+
+      // 🛡️ Add middle-click and Ctrl/Cmd click prevention here:
+      link.addEventListener('mousedown', function(e) {
+        if (
+          !localStorage.getItem('emailSubmitted') &&
+          (e.button === 1 || e.ctrlKey || e.metaKey)
+        ) {
+          e.preventDefault();
+          alert("Please click normally to continue.");
+        }
+      });
     }
+  });
+
+  // 🛡️ Disable right-click to reduce 'Copy Link Address' attempts
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
   });
 });
 </script>
 
-  
 </body>
 </html>
