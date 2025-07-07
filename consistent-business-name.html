@@ -257,32 +257,40 @@
   }
 
   .checklist-form {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 2rem;
     border-radius: 15px;
     margin: 2rem auto;
-    max-width: 100%;
+    max-width: 600px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   .checklist-form h3 {
-    margin-top: 0;
     color: var(--primary-color);
+    margin-bottom: 1rem;
   }
 
   .email-input {
     width: 100%;
-    padding: 0.8rem;
+    padding: 0.8rem 1.2rem;
     margin: 1rem 0;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     border-radius: 100px;
     font-size: 1rem;
-    text-align: center;
+    transition: all 0.3s ease;
+    max-width: 400px;
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(19, 84, 122, 0.1);
   }
 
   .submit-btn {
-    background: var(--custom-btn-bg-color);
+    background: var(--custom-btn-bg-color); 
     color: white;
     border: none;
     padding: 0.8rem 2rem;
@@ -291,11 +299,28 @@
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 1rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 auto;
   }
 
   .submit-btn:hover {
     background: var(--custom-btn-bg-hover-color);
-    transform: scale(1.05);
+    transform: scale(1.02);
+  }
+
+  .submit-btn:disabled {
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .loading-spinner {
+    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -348,12 +373,11 @@
 <body>
   <div class="legal-container">
     <div class="header-icon-container" style="display: flex; align-items: flex-start; justify-content: flex-start;">
-  <img src="https://github.com/espaceoublie/rondalgardner/raw/refs/heads/main/images/consistentname.webp" 
-       alt="Consistent Business Name Icon" 
-       class="header-icon"
-       style="height: 40px; width: auto;">
-</div>
-
+      <img src="https://github.com/espaceoublie/rondalgardner/raw/refs/heads/main/images/consistentname.webp" 
+           alt="Consistent Business Name Icon" 
+           class="header-icon"
+           style="height: 40px; width: auto;">
+    </div>
     
     <h1>Why Consistent Business Names Are Critical for Loan Approval</h1>
     <p class="subtitle">How small discrepancies in your business name can lead to automatic loan rejections</p>
@@ -427,22 +451,37 @@
       <li><strong>Maintain consistency</strong> when opening new accounts or filing future documents</li>
     </ol>
 
-   <div class="checklist-form">
-  <h3>Get the Full 27-Point Fundability Checklist</h3>
-  <p>Ensure your business meets all lender requirements with our comprehensive checklist</p>
-  <form action="https://formspree.io/f/mgvyapbr" method="POST">
-    <input 
-      type="email" 
-      name="email" 
-      placeholder="Your best email address" 
-      class="email-input" 
-      required
-      aria-label="Your email address">
-    <input type="hidden" name="_subject" value="New 27-Point Checklist Request">
-    <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
-    <button type="submit" class="submit-btn">Send Me the Checklist</button>
-  </form>
-</div>
+    <div class="checklist-form" id="gift">
+      <h3>Get Your Free 27-Point Fundability Checklist</h3>
+      <blockquote style="font-style: italic; margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--secondary-color);">
+        <em>"Before applying for any loan, it's critical to know whether your business is truly fundable. This checklist will show you exactly what lenders look for."</em>
+      </blockquote>
+      
+      <p><strong>Most loan rejections come down to one thing:</strong> <span style="color:var(--primary-color); font-weight:bold;">lack of fundability</span>.</p>
+      
+      <p>Enter your email below to receive the complete 27-point fundability checklist (PDF)</p>
+      
+      <form id="checklistForm" action="https://formspree.io/f/mgvyapbr" method="POST">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Your best email address" 
+          class="email-input" 
+          required
+          aria-label="Your email address">
+        <input type="hidden" name="_subject" value="New Fundability Checklist Request">
+        <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
+        
+        <button type="submit" class="submit-btn">
+          <span class="button-text">Send Me the Checklist</span>
+          <span class="loading-spinner" style="display:none;">⌛</span>
+        </button>
+        
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--p-color);">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </form>
+    </div>
 
     <div style="text-align: center; margin-top: 2rem;">
       <a href="https://www.businessfunding.help/" class="back-to-home" aria-label="Return to the homepage">← Back to Homepage</a>
@@ -461,6 +500,66 @@
     // Load fonts after page load
     window.addEventListener('load', function() {
       loadCSS('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap');
+    });
+
+    // Form submission handler
+    document.getElementById('checklistForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const button = form.querySelector('button');
+      const buttonText = form.querySelector('.button-text');
+      const spinner = form.querySelector('.loading-spinner');
+      
+      // Show loading state
+      button.disabled = true;
+      buttonText.textContent = 'Processing...';
+      spinner.style.display = 'inline-block';
+
+      try {
+        // 1. Submit email first
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // 2. Track conversion (if gtag is available)
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'conversion', {
+              'event_category': 'Lead',
+              'event_label': 'Checklist Download'
+            });
+          }
+          
+          // 3. Trigger download
+          const downloadLink = document.createElement('a');
+          downloadLink.href = 'https://raw.githubusercontent.com/espaceoublie/rondalgardner/main/27_Points_Checklist.pdf';
+          downloadLink.download = '27-Point_Business_Fundability_Checklist.pdf';
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+          
+          // 4. Show success
+          buttonText.textContent = 'Checklist Downloaded! ✓';
+          spinner.style.display = 'none';
+          
+          // 5. Reset form after 3 seconds
+          setTimeout(() => {
+            form.reset();
+            buttonText.textContent = 'Send Me the Checklist';
+            button.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        buttonText.textContent = 'Error - Try Again';
+        spinner.style.display = 'none';
+        button.disabled = false;
+      }
     });
   </script>
 </body>
