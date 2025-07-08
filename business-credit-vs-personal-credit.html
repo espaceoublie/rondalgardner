@@ -422,11 +422,43 @@
   </section>
 
   <section id="checklist">
-    <div class="card card-full">
-      <h2>Want to Know If Your Business Credit Is Strong Enough?</h2>
-      <p>Download our free <strong>27-Point Fundability Checklist</strong> to audit your business's readiness for funding approval.</p>
-      <a href="/" class="cta-button">Get Your Free Checklist Now</a>
+    <section id="checklist">
+  <div class="card card-full">
+    <h2>Want to Know If Your Business Credit Is Strong Enough?</h2>
+    <p>Download our free <strong>27-Point Fundability Checklist</strong> to audit your business's readiness for funding approval.</p>
+    
+    <div class="checklist-form">
+      <blockquote style="font-style: italic; margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--secondary-color);">
+        <em>"Before applying for any loan, it's critical to know whether your business is truly fundable. This checklist will show you exactly what lenders look for."</em>
+      </blockquote>
+      
+      <p><strong>Most loan rejections come down to one thing:</strong> <span style="color:var(--primary-color); font-weight:bold;">lack of fundability</span>.</p>
+      
+      <form id="checklistForm" action="https://formspree.io/f/mgvyapbr" method="POST" style="display: flex; flex-direction: column; align-items: center;">
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Your best email address" 
+          class="email-input" 
+          required
+          aria-label="Your email address"
+          style="width: 90%; max-width: 400px; margin: 1rem auto; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+        
+        <input type="hidden" name="_subject" value="New Fundability Checklist Request">
+        <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
+        
+        <button type="submit" class="cta-button" style="width: 90%; max-width: 300px; margin: 0.5rem auto;">
+          <span class="button-text">Get Your Free Checklist Now</span>
+          <span class="loading-spinner" style="display:none;">⌛</span>
+        </button>
+        
+        <p style="font-size: 0.8rem; margin-top: 1rem; color: var(--p-color); text-align: center; width: 90%;">
+          We respect your privacy. Unsubscribe at any time.
+        </p>
+      </form>
     </div>
+  </div>
+</section>
   </section>
 
   <section>
