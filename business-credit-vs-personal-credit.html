@@ -18,15 +18,15 @@
   <meta name="twitter:title" content="Business Credit vs. Personal Credit">
   <meta name="twitter:description" content="What lenders really check when evaluating your business funding application.">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/espaceoublie/rondalgardner/refs/heads/main/rondalgardner.webp">
-  <link rel="canonical" href="https://www.businessfunding.help/business-credit-vs-personal-credit" />
+  <link rel="canonical" href="https://www.businessfunding.help/business-credit-vs-personal-credit">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
-  <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
-  <meta name="apple-mobile-web-app-title" content="B-Fund" />
-  <link rel="manifest" href="/my-favicon/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg">
+  <link rel="shortcut icon" href="/my-favicon/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="B-Fund">
+  <link rel="manifest" href="/my-favicon/site.webmanifest">
   
   <script src="/cookie-consent.js" defer></script>
   
@@ -261,6 +261,50 @@
     margin-bottom: 0.8rem;
   }
 
+  /* Form Styles */
+  .checklist-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checklist-form input[type="email"],
+  .email-input {
+    width: 90%;
+    max-width: 400px;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: clamp(14px, 2vw, 18px);
+  }
+
+  .checklist-form .cta-button {
+    width: 90%;
+    max-width: 300px;
+    margin: 0.5rem auto;
+  }
+
+  .privacy-notice {
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    color: var(--p-color);
+    text-align: center;
+    width: 90%;
+  }
+
+  .highlight-text {
+    color: var(--primary-color);
+    font-weight: bold;
+  }
+
+  .loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+  }
+
   @media (max-width: 768px) {
     header,
     section,
@@ -357,8 +401,8 @@
       <thead>
         <tr>
           <th scope="col">Credit Type</th>
-          <th>How Lenders Use It</th>
-          <th>When It Matters Most</th>
+          <th scope="col">How Lenders Use It</th>
+          <th scope="col">When It Matters Most</th>
         </tr>
       </thead>
       <tbody>
@@ -422,43 +466,53 @@
     </div>
   </section>
 
-    <section id="checklist">
-  <div class="card card-full">
-    <h2>Want to Know If Your Business Credit Is Strong Enough?</h2>
-    <p>Download our free <strong>27-Point Fundability Checklist</strong> to audit your business's readiness for funding approval.</p>
-    
-    <div class="checklist-form">
-      <blockquote style="font-style: italic; margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--secondary-color);">
-        <em>"Before applying for any loan, it's critical to know whether your business is truly fundable. This checklist will show you exactly what lenders look for."</em>
-      </blockquote>
+  <section id="checklist">
+    <div class="card card-full">
+      <h2 id="checklistHeading">Want to Know If Your Business Credit Is Strong Enough?</h2>
+      <p>Download our free <strong>27-Point Fundability Checklist</strong> to audit your business's readiness for funding approval.</p>
       
-      <p><strong>Most loan rejections come down to one thing:</strong> <span style="color:var(--primary-color); font-weight:bold;">lack of fundability</span>.</p>
-      
-      <form id="checklistForm" action="https://formspree.io/f/mgvyapbr" method="POST" style="display: flex; flex-direction: column; align-items: center;">
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Your best email address" 
-          class="email-input" 
-          required
-          aria-label="Your email address"
-          style="width: 90%; max-width: 400px; margin: 1rem auto; padding: 0.8rem; border-radius: 8px; border: 1px solid #ddd;">
+      <div class="checklist-form">
+        <blockquote>
+          <em>"Before applying for any loan, it's critical to know whether your business is truly fundable. This checklist will show you exactly what lenders look for."</em>
+        </blockquote>
         
-        <input type="hidden" name="_subject" value="New Fundability Checklist Request">
-        <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
+        <p><strong>Most loan rejections come down to one thing:</strong> <span class="highlight-text">lack of fundability</span>.</p>
         
-        <button type="submit" class="cta-button" style="width: 90%; max-width: 300px; margin: 0.5rem auto;">
-          <span class="button-text">Get Your Free Checklist Now</span>
-          <span class="loading-spinner" style="display:none;">⌛</span>
-        </button>
-        
-        <p class="privacy-notice">
-          We respect your privacy. Unsubscribe at any time.
-        </p>
-      </form>
+        <form id="checklistForm" action="https://formspree.io/f/mgvyapbr" method="POST" aria-labelledby="checklistHeading">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Your best email address" 
+            class="email-input" 
+            required
+            aria-label="Your email address">
+          
+          <input type="hidden" name="_subject" value="New Fundability Checklist Request">
+          <input type="hidden" name="_next" value="https://www.businessfunding.help/thank-you">
+          
+          <button type="submit" class="cta-button">
+            <span class="button-text">Get Your Free Checklist Now</span>
+            <span class="loading-spinner" style="display:none;">
+              <svg width="20" height="20" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="white">
+                <g fill="none" fill-rule="evenodd">
+                  <g transform="translate(1 1)" stroke-width="2">
+                    <circle stroke-opacity=".5" cx="18" cy="18" r="18"/>
+                    <path d="M36 18c0-9.94-8.06-18-18-18">
+                      <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/>
+                    </path>
+                  </g>
+                </g>
+              </svg>
+            </span>
+          </button>
+          
+          <p class="privacy-notice">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <section>
     <h2>Frequently Asked Questions</h2>
@@ -497,8 +551,45 @@
           });
         });
       });
+
+      // Form submission handler
+      const form = document.getElementById('checklistForm');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          const button = form.querySelector('.cta-button');
+          const buttonText = button.querySelector('.button-text');
+          const spinner = button.querySelector('.loading-spinner');
+          
+          // Show loading state
+          buttonText.style.display = 'none';
+          spinner.style.display = 'inline-block';
+          button.disabled = true;
+          
+          // Track the conversion
+          gtag('event', 'conversion', {
+            'event_category': 'Lead',
+            'event_label': 'Checklist Form Submission'
+          });
+
+          // Submit form via fetch for better error handling
+          fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+          }).catch(error => {
+            // Reset button if error occurs
+            buttonText.style.display = 'inline-block';
+            spinner.style.display = 'none';
+            button.disabled = false;
+            console.error('Error:', error);
+          });
+        });
+      }
     });
   </script>
 </body>
-  
 </html>
