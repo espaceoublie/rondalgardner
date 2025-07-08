@@ -925,6 +925,14 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+  
+<script>
+  // Redirect URLs without .html to their .html equivalents
+  if (!location.pathname.endsWith('.html') && location.pathname !== '/') {
+    const clean = location.pathname.replace(/\/$/, '');
+    window.location.href = clean + '.html';
+  }
+</script>
 
 </body>
 </html>
