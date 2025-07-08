@@ -18,6 +18,22 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.businessfunding.help/test" />
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0PX3HLNFLY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-0PX3HLNFLY');
+
+  // Safari Private Mode fix
+  if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes("Chrome")) {
+    gtag('config', 'G-0PX3HLNFLY', {
+      'cookie_flags': 'SameSite=None;Secure'
+    });
+  }
+</script>
+
   <style>
     body {
       font-family: sans-serif;
