@@ -314,6 +314,21 @@
       100% { transform: rotate(360deg); }
     }
     
+    /* Back to Home button */
+    .back-to-home {
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-home:hover {
+      color: var(--custom-btn-bg-hover-color);
+      text-decoration: underline;
+    }
+    
     /* Mobile Styles */
     @media (max-width: 768px) {
       header {
@@ -524,6 +539,25 @@
   <a href="#gift" class="cta-button">Get Our Complete Fundability Checklist</a>
 </section>
 
+<section id="gift">
+  <h2>Get Your Free 27-Point Fundability Checklist</h2>
+  <blockquote><em>"Before applying for any loan, it's critical to know whether your business is truly fundable. This checklist will show you exactly what lenders look for."</em></blockquote>
+  
+  <p><strong>Most loan rejections come down to one thing:</strong> <span style="color:#13547a; font-weight:bold;">lack of fundability</span>.</p>
+  
+  <p>Enter your email below to receive the complete 27-point fundability checklist (PDF)</p>
+  
+  <form id="checklistForm" action="https://formspree.io/f/mgvyapbr" method="POST">
+    <input type="email" name="email" placeholder="Your best email address" required>
+    <input type="hidden" name="_subject" value="New Fundability Checklist Request">
+    <button type="submit" class="cta-button">
+      <span class="button-text">Send Me the Checklist</span>
+      <span class="loading-spinner" style="display:none;">⌛</span>
+    </button>
+    <p style="font-size: 14px; margin-top: 1rem;">We respect your privacy. Unsubscribe at any time.</p>
+  </form>
+</section>
+
 <section id="timeline">
   <h2>Business Credit Building Timeline</h2>
   
@@ -575,6 +609,8 @@
     <p><strong>Need personalized help?</strong> Book a free 30-minute fundability review:</p>
     <a href="https://calendly.com/cpysolutions/30min" class="cta-button">Schedule Consultation</a>
   </div>
+  <br>
+  <a href="/" class="back-to-home">← Back to Homepage</a>
 </section>
 
 <footer>
@@ -583,6 +619,74 @@
 </footer>
 
 <script>
+  // Handle checklist form submission
+  document.getElementById('checklistForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const button = form.querySelector('button');
+    const buttonText = form.querySelector('.button-text');
+    const spinner = form.querySelector('.loading-spinner');
+    
+    // Show loading state
+    button.disabled = true;
+    buttonText.textContent = 'Processing...';
+    spinner.style.display = 'inline-block';
+
+    try {
+      // 1. Submit email first
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // 2. Track conversion
+        gtag('event', 'conversion', {
+          'event_category': 'Lead',
+          'event_label': 'Checklist Download'
+        });
+        
+        // 3. Trigger download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'https://raw.githubusercontent.com/espaceoublie/rondalgardner/main/27_Points_Checklist.pdf';
+        downloadLink.download = '27-Point_Business_Fundability_Checklist.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        
+        // 4. Show success
+        buttonText.textContent = 'Checklist Downloaded! ✓';
+        spinner.style.display = 'none';
+        
+        // 5. Reset form after 3 seconds
+        setTimeout(() => {
+          form.reset();
+          buttonText.textContent = 'Send Me the Checklist';
+          button.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      buttonText.textContent = 'Error - Try Again';
+      spinner.style.display = 'none';
+      button.disabled = false;
+    }
+  });
+
+  // Make all #gift anchor links trigger the form
+  document.querySelectorAll('a[href="#gift"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('checklistForm').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    });
+  });
+
   // Track form submissions
   const forms = document.querySelectorAll("form");
   forms.forEach(form => {
