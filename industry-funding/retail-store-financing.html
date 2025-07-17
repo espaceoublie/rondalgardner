@@ -416,5 +416,60 @@
     <script>
       document.getElementById('checklistForm').addEventListener('submit',async function(e){e.preventDefault();const form=e.target;const button=form.querySelector('button');const buttonText=form.querySelector('.button-text');const spinner=form.querySelector('.loading-spinner');button.disabled=true;buttonText.textContent='Processing...';spinner.style.display='inline-block';try{const response=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(response.ok){gtag('event','conversion',{'event_category':'Lead','event_label':'Checklist Download'});gtag('event','generate_lead',{'currency':'USD','value':7.00});const downloadLink=document.createElement('a');downloadLink.href='https://raw.githubusercontent.com/espaceoublie/rondalgardner/main/27_Points_Checklist.pdf';downloadLink.download='27-Point_Fundability_Checklist.pdf';document.body.appendChild(downloadLink);downloadLink.click();document.body.removeChild(downloadLink);buttonText.textContent='Checklist Downloaded! ✓';spinner.style.display='none';setTimeout(()=>{form.reset();buttonText.textContent='Send Me the Checklist';button.disabled=false;},3000);}else{throw new Error('Form submission failed');}}catch(error){console.error('Error:',error);buttonText.textContent='Error - Try Again';spinner.style.display='none';button.disabled=false;}});document.querySelectorAll('a[href="#checklist"]').forEach(link=>{link.addEventListener('click',function(e){e.preventDefault();document.getElementById('checklist').scrollIntoView({behavior:'smooth'});});document.querySelectorAll('a[href^="#"]').forEach(anchor=>{anchor.addEventListener('click',function(e){e.preventDefault();document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});});});
     </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const trackedLinks = [
+    'https://info380.clickfunnels.com/',
+    'https://calendly.com/',
+    'https://member.myscoreiq.com/',
+    'https://www.linkedin.com/in/rondal-gardner',
+    'https://www.deposyt.com/rondal/'
+  ];
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    if (trackedLinks.some(url => link.href.includes(url))) {
+      link.addEventListener('click', function(e) {
+        if (!localStorage.getItem('emailSubmitted')) {
+          e.preventDefault();
+          const email = prompt("To continue, please enter your email:");
+          if (email) {
+            fetch('https://formspree.io/f/mgvyapbr', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+               
+                email: email,
+                link_clicked: link.href,
+                timestamp: new Date().toISOString()
+              })
+            })
+            .then(() => {
+              localStorage.setItem('emailSubmitted', 'true');
+              window.location.href = link.href;
+            });
+          }
+        }
+      });
+
+      // 🛡️ Add middle-click and Ctrl/Cmd click prevention here:
+      link.addEventListener('mousedown', function(e) {
+        if (
+          !localStorage.getItem('emailSubmitted') &&
+          (e.button === 1 || e.ctrlKey || e.metaKey)
+        ) {
+          e.preventDefault();
+          alert("Please click normally to continue.");
+        }
+      });
+    }
+  });
+
+  // 🛡️ Disable right-click to reduce 'Copy Link Address' attempts
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+});
+</script>
+  
   </body>
 </html>
