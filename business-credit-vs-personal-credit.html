@@ -402,6 +402,27 @@
       box-sizing: border-box;
     }
   }
+    details {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  summary {
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary:before {
+    content: "+ ";
+    color: #13547a;
+  }
+  details[open] summary:before {
+    content: "- ";
+  }
+
 </style>
 </head>
 
@@ -412,6 +433,24 @@
     <a href="#checklist" class="cta-button">Get My Fundability Checklist</a>
   </header>
 
+<section>
+  <div class="card" style="text-align:left; max-width:800px; margin:2rem auto;">
+    <h3>❓ People Also Ask:</h3>
+    <details>
+      <summary>Can I get business funding with bad personal credit?</summary>
+      <p>Yes, but options are limited. <strong>Strong business credit can compensate</strong> for weak personal credit for established businesses. Startups may need to explore collateral-based loans or alternative lenders.</p>
+    </details>
+    <details>
+      <summary>How fast can I build business credit?</summary>
+      <p>You can see initial scores in <strong>3-6 months</strong>, but most lenders prefer 12+ months of history. Start with vendor accounts that report to Dun & Bradstreet.</p>
+    </details>
+    <details>
+      <summary>Do business loans affect personal credit?</summary>
+      <p>Only if you <strong>personally guarantee</strong> the loan. Loans under your EIN alone typically don't report to personal bureaus.</p>
+    </details>
+  </div>
+</section>
+  
   <section>
     <h2>Understanding Personal Credit</h2>
     <div class="card-row">
