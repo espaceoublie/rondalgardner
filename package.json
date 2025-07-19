@@ -1,9 +1,0 @@
-{
-  "name": "sitemap-generator",
-  "version": "1.0.0",
-  "main": "generate-sitemap.js",
-  "license": "MIT",
-  "dependencies": {
-    "sitemap": "^7.1.1"
-  }
-}
