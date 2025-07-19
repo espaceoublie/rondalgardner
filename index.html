@@ -1059,17 +1059,21 @@ It's also important to <a href="/business-credit-vs-personal-credit">understand 
     <p>&copy; 2025 Rondal Gardner | Business Funding Expert. All rights reserved.</p>
     <p><a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
  
-    <div class="relative group mt-16">
-  <div class="bg-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4 rounded-md">
+    <div class="fixed top-1/2 left-0 transform -translate-y-1/2 z-50 group">
+  <!-- The small blue tab -->
+  <div class="w-3 h-16 bg-blue-500 opacity-30 hover:opacity-80 cursor-pointer rounded-r-md transition-opacity duration-300"></div>
+
+  <!-- The hidden content panel -->
+  <div class="absolute left-0 top-0 w-64 bg-blue-50 shadow-lg p-4 rounded-r-md opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-500 pointer-events-none group-hover:pointer-events-auto">
     <section>
-      <h2 class="text-xl font-semibold">Our Featured Property</h2>
-      <p class="mt-2">
-        We are currently showcasing an exclusive listing in Bandung:
+      <h2 class="text-lg font-semibold text-gray-800">Our Featured Property</h2>
+      <p class="mt-2 text-sm text-gray-700">
+        Showcasing a luxury listing in Bandung:
         <a href="https://www.neglasarihouse.com/" class="text-blue-600 underline hover:text-blue-800" target="_blank" rel="noopener">
           NeglasariHouse.com
-        </a> — a stunning 3-floor luxury home in Ciumbuleuit.
+        </a>
       </p>
-      <ul class="list-disc list-inside mt-2 text-blue-600">
+      <ul class="list-disc list-inside mt-2 text-sm text-blue-600">
         <li>
           <a href="https://www.neglasarihouse.com/gallery" class="underline hover:text-blue-800" target="_blank" rel="noopener">
             View Property Gallery
@@ -1083,8 +1087,8 @@ It's also important to <a href="/business-credit-vs-personal-credit">understand 
       </ul>
     </section>
   </div>
-  <div class="absolute inset-0 bg-blue-100 opacity-10 hover:opacity-0 transition-opacity duration-500 rounded-md cursor-pointer"></div>
 </div>
+
     
 </footer>
 
